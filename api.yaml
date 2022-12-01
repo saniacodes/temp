@@ -1,0 +1,49 @@
+openapi: 3.0.2
+
+tags:
+ - name: Student API
+   description: student information
+info:
+ version: 0.1
+ title: Student API
+ description: Request & Response of Student API 
+ termsofService: ""
+ Contact:
+  name: someone
+  url: "https://someone.com"
+  email: someone@gmail.com
+  
+  paths: 
+   /student/{studentId}:
+    parameters: 
+     - description: Student information for the given student
+       in: path
+       name: studentId
+       schema:
+        type: number
+    get: 
+     operationId: StudentAPI
+     tags: 
+      - Student API
+     description:
+      Returns Student information for the given studentId
+     summary: Student Object for given studentID.
+     parameters: [ ] 
+     responses: 
+      "200":
+       description: Success
+       content:
+        application/json:
+         schema:
+          $ref: "#/components/schema/Student"
+         
+         
+components:
+ schemas:
+  Student:
+   type: object
+   nullable: True
+   properties: 
+    studentID: 
+     type: string
+     
